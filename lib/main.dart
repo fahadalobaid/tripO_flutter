@@ -1,32 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:slider_button/slider_button.dart';
+import 'package:tripo_app/pages/Explore_page.dart';
 import 'package:tripo_app/pages/LandPage.dart';
 import 'package:tripo_app/pages/Signup_Signin_Page.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tripo_app/providers/auth_provider.dart';
 import 'package:provider/provider.dart';
 
-// void main() {
-//   runApp(
-//     MultiProvider(
-//       providers: [
-//         // ChangeNotifierProvider<TripsProvider>(create: (_) => TripsProvider()),
-//         ChangeNotifierProvider<UserProvider>(create: (_) => UserProvider()),
-//       ],
-//       child: MyApp(),
-//     ),
-//   );
-// }
-
 void main() {
-  runApp(MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        // ChangeNotifierProvider<TripsProvider>(create: (_) => TripsProvider()),
+        ChangeNotifierProvider<UserProvider>(create: (_) => UserProvider()),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
@@ -46,6 +47,10 @@ class MyApp extends StatelessWidget {
       GoRoute(
         path: '/SignupSigninPage',
         builder: (context, state) => SignupSigninPage(),
+      ),
+      GoRoute(
+        path: '/ExplorePage',
+        builder: (context, state) => ExplorePage(),
       ),
     ],
   );
