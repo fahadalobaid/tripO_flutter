@@ -8,7 +8,7 @@ class AuthServices {
   Future<String> signup({required User user}) async {
     late String token = "";
     try {
-      Response res = await _dio.post("path", data: user.toJson());
+      Response res = await _dio.post("register/", data: user.toJson());
       token = res.data.token;
     } on DioError catch (error) {
       print("error");
@@ -20,7 +20,7 @@ class AuthServices {
   Future<String> signin({required User user}) async {
     late String token;
     try {
-      Response response = await Client.dio.post('/signin', data: user.toJson());
+      Response response = await Client.dio.post('login/', data: user.toJson());
       token = response.data["token"];
     } on DioError catch (error) {
       print(error.message);

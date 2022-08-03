@@ -1,14 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:tripo_app/models/user.dart';
 import 'package:tripo_app/providers/auth_provider.dart';
 
-class SigninShowup extends StatelessWidget {
+class SigninShowup extends StatefulWidget {
   SigninShowup({Key? key}) : super(key: key);
+
+  @override
+  State<SigninShowup> createState() => _SigninShowupState();
+}
+
+class _SigninShowupState extends State<SigninShowup> {
   final usernameController = TextEditingController();
+
   final passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -80,9 +89,10 @@ class SigninShowup extends StatelessWidget {
               child: ElevatedButton(
                   onPressed: () async {
                     Provider.of<UserProvider>(context, listen: false).signin(
-                        user: User(
+                        User(
                             username: usernameController.text,
                             password: passwordController.text));
+                    context.go('/ExplorePage');
                   },
                   child: Text("Sign in"),
                   style: ElevatedButton.styleFrom(

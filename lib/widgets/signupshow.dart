@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:tripo_app/models/user.dart';
 import 'package:tripo_app/providers/auth_provider.dart';
@@ -95,7 +96,10 @@ class _SignupShowupState extends State<SignupShowup> {
               child: ElevatedButton(
                   onPressed: () async {
                     Provider.of<UserProvider>(context, listen: false).signup(
-                        User(id: null, username: username, password: password));
+                        User(
+                            username: newuserusernameController.text,
+                            password: newuserpasswordController.text));
+                    // context.go('/ExplorePage');
                   },
                   child: Text("Sign Up"),
                   style: ElevatedButton.styleFrom(
