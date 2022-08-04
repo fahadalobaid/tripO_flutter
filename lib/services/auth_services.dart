@@ -9,7 +9,7 @@ class AuthServices {
     late String token = "";
     try {
       Response res = await _dio.post("register/", data: user.toJson());
-      token = res.data.token;
+      // token = res.data.token;
     } on DioError catch (error) {
       print("error");
     }
@@ -21,7 +21,8 @@ class AuthServices {
     late String token;
     try {
       Response response = await Client.dio.post('login/', data: user.toJson());
-      token = response.data["token"];
+      print(response.data["access"]);
+      token = response.data["access"];
     } on DioError catch (error) {
       print(error.message);
     }

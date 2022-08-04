@@ -88,7 +88,7 @@ class _SigninShowupState extends State<SigninShowup> {
               height: 60,
               child: ElevatedButton(
                   onPressed: () async {
-                    Provider.of<UserProvider>(context, listen: false).signin(
+                    Provider.of<UserProvider>(context, listen: true).signin(
                         User(
                             username: usernameController.text,
                             password: passwordController.text));

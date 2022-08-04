@@ -4,17 +4,26 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:tripo_app/pages/ExplorePage.dart';
+import 'package:tripo_app/pages/ProfilePage.dart';
 import 'package:tripo_app/providers/auth_provider.dart';
 
-class VaviBar extends StatelessWidget {
+class VaviBar extends StatefulWidget {
   VaviBar({Key? key}) : super(key: key);
+
+  @override
+  State<VaviBar> createState() => _VaviBarState();
+}
+
+class _VaviBarState extends State<VaviBar> {
   int index = 0;
+
   final screens = [
     ExplorePage(),
-    // Transactions(),
+    EditProfilePage()
     // EditProfilePage(),
     // profile
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,9 +42,8 @@ class VaviBar extends StatelessWidget {
                   NavigationDestinationLabelBehavior.onlyShowSelected,
               selectedIndex: index,
               animationDuration: Duration(seconds: 1),
-              // onDestinationSelected: (index) =>
-              //     setState
-              //     (() => this.index = index),
+              onDestinationSelected: (index) =>
+                  setState(() => this.index = index),
               destinations: [
                 NavigationDestination(
                     icon: Icon(Icons.home_outlined),
