@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tripo_app/widgets/distenationCard.dart';
 import 'package:tripo_app/widgets/smallCard.dart';
 
@@ -20,7 +21,7 @@ class ExplorePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
-                    icon: Icon(Icons.propane_outlined),
+                    icon: Icon(Icons.person_pin),
                     onPressed: () {
                       Navigator.pop(context);
                     },
@@ -66,14 +67,25 @@ class ExplorePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                    child: Text(
-                  "Popular Distination ",
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black),
+                    child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    "Popular Distination ",
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                  ),
                 )),
-                Container(child: Text("view all")),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                      child: GestureDetector(
+                          onTap: () {
+                            context.push("/AllTrip");
+                          },
+                          child: Text("view all"))),
+                ),
               ],
             ),
             SmallCard()

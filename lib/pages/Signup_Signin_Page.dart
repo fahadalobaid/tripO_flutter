@@ -98,7 +98,7 @@ class SignupSigninPage extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              context.push("/ExplorePage");
+              context.push("/VaviBar");
             },
             child: Text(
               "Skip",

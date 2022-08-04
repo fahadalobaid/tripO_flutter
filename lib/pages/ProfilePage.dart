@@ -161,7 +161,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(75, 10, 75, 20),
+                        padding: const EdgeInsets.fromLTRB(75, 90, 75, 20),
                         child: SizedBox(
                           width: 340,
                           height: 60,
@@ -169,8 +169,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                               onPressed: () async {},
                               child: Text(
                                 "Save",
-                                style: TextStyle(
-                                    color: Color.fromARGB(255, 245, 87, 87)),
+                                style: TextStyle(color: Colors.white),
                               ),
                               style: ElevatedButton.styleFrom(
                                   textStyle: TextStyle(
@@ -179,32 +178,55 @@ class _EditProfilePageState extends State<EditProfilePage> {
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30),
                                   ),
-                                  primary: Colors.white)),
+                                  primary: Color.fromARGB(255, 245, 87, 87))),
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(25, 0, 25, 25),
+                        padding: const EdgeInsets.fromLTRB(75, 0, 75, 20),
                         child: SizedBox(
                           width: 340,
-                          height: 49,
-                          child: OutlinedButton(
-                              onPressed: () {},
+                          height: 60,
+                          child: ElevatedButton(
+                              onPressed: () async {},
                               child: Text(
                                 "Cancel",
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    // letterSpacing: 2,
-                                    color: Colors.black),
+                                style: TextStyle(color: Colors.white),
                               ),
                               style: ElevatedButton.styleFrom(
-                                textStyle: TextStyle(fontSize: 20),
+                                textStyle: TextStyle(
+                                  fontSize: 20,
+                                ),
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(12.5),
+                                  borderRadius: BorderRadius.circular(30),
                                 ),
                                 primary: Colors.grey,
                               )),
                         ),
                       ),
+
+                      // Padding(
+                      //   padding: const EdgeInsets.fromLTRB(25, 0, 25, 25),
+                      //   child: SizedBox(
+                      //     width: 340,
+                      //     height: 49,
+                      //     child: OutlinedButton(
+                      //         onPressed: () {},
+                      //         child: Text(
+                      //           "Cancel",
+                      //           style: TextStyle(
+                      //               fontSize: 15,
+                      //               // letterSpacing: 2,
+                      //               color: Colors.black),
+                      //         ),
+                      //         style: ElevatedButton.styleFrom(
+                      //           textStyle: TextStyle(fontSize: 20),
+                      //           shape: RoundedRectangleBorder(
+                      //             borderRadius: BorderRadius.circular(12.5),
+                      //           ),
+                      //           primary: Colors.grey,
+                      //         )),
+                      //   ),
+                      // ),
                     ],
                   )
                 ]))));
