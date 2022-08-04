@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:slider_button/slider_button.dart';
-import 'package:tripo_app/pages/Explore_page.dart';
+import 'package:tripo_app/pages/ExplorePage.dart';
+import 'package:tripo_app/pages/VaviBar.dart';
 import 'package:tripo_app/pages/LandPage.dart';
 import 'package:tripo_app/pages/Signup_Signin_Page.dart';
 import 'package:go_router/go_router.dart';
@@ -42,15 +43,15 @@ class _MyAppState extends State<MyApp> {
     routes: [
       GoRoute(
         path: '/',
-        builder: (context, state) => const LandPage(),
+        builder: (context, state) => VaviBar(),
       ),
       GoRoute(
         path: '/SignupSigninPage',
         builder: (context, state) => SignupSigninPage(),
       ),
       GoRoute(
-        path: '/ExplorePage',
-        builder: (context, state) => ExplorePage(),
+        path: '/VaviBar',
+        builder: (context, state) => VaviBar(),
       ),
     ],
   );

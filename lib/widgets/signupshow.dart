@@ -99,7 +99,7 @@ class _SignupShowupState extends State<SignupShowup> {
                         User(
                             username: newuserusernameController.text,
                             password: newuserpasswordController.text));
-                    // context.go('/ExplorePage');
+                    context.go('/VaviBar');
                   },
                   child: Text("Sign Up"),
                   style: ElevatedButton.styleFrom(

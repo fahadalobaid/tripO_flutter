@@ -83,7 +83,7 @@ class SignupSigninPage extends StatelessWidget {
                     );
                   },
                   child: Text(
-                    "Sign iiiiin",
+                    "Sign in",
                     style: TextStyle(color: Color.fromARGB(255, 245, 87, 87)),
                   ),
                   style: ElevatedButton.styleFrom(

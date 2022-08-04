@@ -41,19 +41,13 @@ class _LandPageState extends State<LandPage> {
                   buttonColor: Color.fromARGB(255, 255, 245, 245),
                   backgroundColor:
                       Color.fromARGB(255, 182, 164, 164).withOpacity(0.85),
-                  // Color.fromARGB(255, 212, 209, 209),
                   action: () {
                     GoRouter.of(context).push('/SignupSigninPage');
-
-                    ///Do something here OnSlide
-                    // Navigator.of(cotext).pop();
                   },
                   label: Text(
                     "Let's Explore !   ",
                     style: TextStyle(
-                        color:
-                            // Colors.black,
-                            Color.fromARGB(255, 58, 58, 58),
+                        color: Color.fromARGB(255, 58, 58, 58),
                         fontWeight: FontWeight.w600,
                         fontSize: 18),
                   ),
