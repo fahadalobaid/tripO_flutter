@@ -9,7 +9,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tripo_app/services/client.dart';
 
 class UserProvider extends ChangeNotifier {
-  User? user;
+  // User? user;
+  late User user;
   String token = "";
 
   // Future<void>
@@ -21,6 +22,8 @@ class UserProvider extends ChangeNotifier {
     //   Client.dio.options.headers = {
     //     HttpHeaders.authorizationHeader: 'Bearer $token',
     //   };
+    setToken(token);
+    print(token);
     notifyListeners();
     //   return true;
     // } on Exception catch (e) {
@@ -60,18 +63,18 @@ class UserProvider extends ChangeNotifier {
 
   void setToken(String token) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('token', token);
+    prefs.setString('access', token);
   }
 
   void getToken() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    token = prefs.getString('token') ?? "";
+    token = prefs.getString('access') ?? "";
     notifyListeners();
   }
 
   void logout() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.remove('token');
+    prefs.remove('access');
     token = "";
     notifyListeners();
   }

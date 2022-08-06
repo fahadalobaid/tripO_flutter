@@ -88,11 +88,11 @@ class _SigninShowupState extends State<SigninShowup> {
               height: 60,
               child: ElevatedButton(
                   onPressed: () async {
-                    Provider.of<UserProvider>(context, listen: true).signin(
+                    Provider.of<UserProvider>(context, listen: false).signin(
                         User(
                             username: usernameController.text,
                             password: passwordController.text));
-                    context.go('/ExplorePage');
+                    // context.go('/ExplorePage');
                   },
                   child: Text("Sign in"),
                   style: ElevatedButton.styleFrom(

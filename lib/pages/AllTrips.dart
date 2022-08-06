@@ -8,10 +8,10 @@ class AllTrip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // backgroundColor: Color.fromARGB(255, 202, 74, 74),
-        body: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
+      // backgroundColor: Color.fromARGB(255, 202, 74, 74),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
           Padding(
             padding: const EdgeInsets.all(40.0),
             child: Row(
@@ -49,6 +49,26 @@ class AllTrip extends StatelessWidget {
               ),
             ),
           ),
-        ]));
+        ],
+        // GridView.builder(gridDelegate:
+
+        // SliverGridDelegateWithMaxCrossAxisExtent(
+        //       maxCrossAxisExtent: 350,
+        //       childAspectRatio: .9,
+        //       crossAxisSpacing: 1.5,
+        //       mainAxisSpacing: 1.5),
+        // , itemBuilder: itemBuilder)
+      ),
+
+      //  body:
+      // GridView.builder(
+      // gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+      //     maxCrossAxisExtent: 350,
+      //     childAspectRatio: .9,
+      //     crossAxisSpacing: 1.5,
+      //     mainAxisSpacing: 1.5),
+      // itemCount: Books.length,
+      // itemBuilder: (Context, index) {},
+    );
   }
 }

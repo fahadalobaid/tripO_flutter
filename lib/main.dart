@@ -44,8 +44,10 @@ class _MyAppState extends State<MyApp> {
   final _router = GoRouter(
     routes: [
       GoRoute(
-        path: '/', builder: (context, state) => VaviBar(),
-        //  LandPage(),
+        path: '/',
+        builder: (context, state) =>
+            // VaviBar(),
+            LandPage(),
       ),
       GoRoute(
         path: '/SignupSigninPage',

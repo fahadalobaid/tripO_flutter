@@ -14,9 +14,9 @@ class SignupShowup extends StatefulWidget {
 }
 
 class _SignupShowupState extends State<SignupShowup> {
-  final newuserusernameController = TextEditingController();
+  // final newuserusernameController = TextEditingController();
 
-  final newuserpasswordController = TextEditingController();
+  // final newuserpasswordController = TextEditingController();
 
   String username = "";
 
@@ -39,7 +39,12 @@ class _SignupShowupState extends State<SignupShowup> {
         Padding(
           padding: const EdgeInsets.all(20.0),
           child: TextField(
-            controller: newuserusernameController,
+            // controller: newuserusernameController,
+            onChanged: (value) {
+              setState(() {
+                username = value;
+              });
+            },
             showCursor: true,
             readOnly: false,
             decoration: InputDecoration(
@@ -56,8 +61,11 @@ class _SignupShowupState extends State<SignupShowup> {
         Padding(
           padding: const EdgeInsets.all(20.0),
           child: TextFormField(
+            onChanged: (value) {
+              password = value;
+            },
             // obscureText: true,
-            controller: newuserpasswordController,
+            // controller: newuserpasswordController,
             showCursor: true,
             readOnly: false,
             decoration: InputDecoration(
@@ -94,12 +102,16 @@ class _SignupShowupState extends State<SignupShowup> {
               width: 340,
               height: 60,
               child: ElevatedButton(
-                  onPressed: () async {
-                    Provider.of<UserProvider>(context, listen: true).signup(
-                        User(
-                            username: newuserusernameController.text,
-                            password: newuserpasswordController.text));
-                    context.go('/VaviBar');
+                  onPressed: () {
+                    Provider.of<UserProvider>(context, listen: false)
+                        .signup(User(
+                      // username: newuserusernameController.text,
+                      // password: newuserpasswordController.text
+                      username: username,
+                      password: password,
+                    ));
+                    // context.go('/VaviBar');
+                    setState(() {});
                   },
                   child: Text("Sign Up"),
                   style: ElevatedButton.styleFrom(
