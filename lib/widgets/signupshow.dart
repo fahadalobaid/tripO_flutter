@@ -14,9 +14,9 @@ class SignupShowup extends StatefulWidget {
 }
 
 class _SignupShowupState extends State<SignupShowup> {
-  // final newuserusernameController = TextEditingController();
+  final newuserusernameController = TextEditingController();
 
-  // final newuserpasswordController = TextEditingController();
+  final newuserpasswordController = TextEditingController();
 
   String username = "";
 
@@ -39,12 +39,12 @@ class _SignupShowupState extends State<SignupShowup> {
         Padding(
           padding: const EdgeInsets.all(20.0),
           child: TextField(
-            // controller: newuserusernameController,
-            onChanged: (value) {
-              setState(() {
-                username = value;
-              });
-            },
+            controller: newuserusernameController,
+            // onChanged: (value) {
+            //   setState(() {
+            //     username = value;
+            //   });
+            // },
             showCursor: true,
             readOnly: false,
             decoration: InputDecoration(
@@ -61,11 +61,11 @@ class _SignupShowupState extends State<SignupShowup> {
         Padding(
           padding: const EdgeInsets.all(20.0),
           child: TextFormField(
-            onChanged: (value) {
-              password = value;
-            },
+            // onChanged: (value) {
+            //   password = value;
+            // },
             // obscureText: true,
-            // controller: newuserpasswordController,
+            controller: newuserpasswordController,
             showCursor: true,
             readOnly: false,
             decoration: InputDecoration(
@@ -103,13 +103,18 @@ class _SignupShowupState extends State<SignupShowup> {
               height: 60,
               child: ElevatedButton(
                   onPressed: () {
-                    Provider.of<UserProvider>(context, listen: false)
-                        .signup(User(
-                      // username: newuserusernameController.text,
-                      // password: newuserpasswordController.text
-                      username: username,
-                      password: password,
-                    ));
+                    final auth =
+                        Provider.of<UserProvider>(context, listen: false);
+                    auth.signup(
+                            // User(username: username))
+                            user: User(
+                                username: newuserusernameController.text,
+                                password: newuserpasswordController.text))
+                        //   username: username,
+                        //   password: password,
+                        // )
+
+                        ;
                     // context.go('/VaviBar');
                     setState(() {});
                   },

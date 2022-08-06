@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:go_router/go_router.dart';
+import 'package:scroll_snap_list/scroll_snap_list.dart';
 import 'package:tripo_app/widgets/distenationCard.dart';
 import 'package:tripo_app/widgets/smallCard.dart';
 
@@ -55,7 +56,8 @@ class ExplorePage extends StatelessWidget {
                 ),
               ),
             ),
-
+// SizedBox(height: 250,child: ScrollSnapList(itemBuilder: (BuildContext context, int index) {
+//           return DisCard();}, itemCount: TripList.length, itemSize: itemSize, onItemFocus: (onItemFocus){},dynamicItemSize:true,),)
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

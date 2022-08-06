@@ -14,7 +14,7 @@ class UserProvider extends ChangeNotifier {
   String token = "";
 
   // Future<void>
-  void signup(User user) async {
+  void signup({required User user}) async {
     token = await AuthServices().signup(user: user);
     //   SharedPreferences prefs = await SharedPreferences.getInstance();
     //   prefs.setString("myToken", token);
@@ -24,7 +24,7 @@ class UserProvider extends ChangeNotifier {
     //   };
     setToken(token);
     print(token);
-    notifyListeners();
+    // notifyListeners();
     //   return true;
     // } on Exception catch (e) {
     //   return false;

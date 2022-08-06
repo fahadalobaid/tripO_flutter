@@ -1,67 +1,91 @@
-// import "package:dio/dio.dart";
-// import 'package:tripo_app/services/client.dart';
+import 'package:dio/dio.dart';
 
-// class TripsServices {
-//   final Dio _dio = Dio();
-//   // final _baseUrl =
-// }
-//  class TripsServices {
-//   Future<List<trip>> getTrips() async {
-//     List<Trip> books = [];
-//     try {
-//       Response response = await Client.dio.get('/books');
-//       books =
-//           (response.data as List).map((book) => trip.fromJson(book)).toList();
-//     } on DioError catch (error) {
-//       print(error);
-//     }
-//     return Trips;
-//   }
+class TripsServices {
+  final Dio _dio = Dio();
 
-//   Future<Trip> createBook({required Trip trip}) async {
-//     late Trip retrievedBook;
-//     try {
-//       // FormData data = FormData.fromMap({
-//       //   "title": trip.title,
-//       //   "description": trip.title,
-//       //   "price": trip.price,
-//       //   "image": await MultipartFile.fromFile(
-//       //     trip.image,
-//       //   ),
-//       // });
-//       // Response response = await Client.dio.post('/trips', data: data);
-//       // retrievedBook = Trip.fromJson(response.data);
-//     } on DioError catch (error) {
-//       print(error);
-//     }
-//     // return retrievedTrip;
-//   }
+  final _baseUrl = 'http://8f22-188-71-240-74.in.ngrok.io';
+  final _testURL = 'http://10.0.2.2:8000';
 
-// //   Future<Trip> updateBook({required Trip trip}) async {
-// //     late Trip retrievedBook;
-// //     try {
-// //       FormData data = FormData.fromMap({
-// //         "title": trip.title,
-// //         "description":trip.title,
-// //         "price": trip.price,
-// //         "image": await MultipartFile.fromFile(
-// //           trip.image,
-// //         ),
-// //       });
-// //       Response response = await Client.dio.put('/trips/${trip.id}', data: data);
-// //       retrievedBook = Trip.fromJson(response.data);
+  Future<List<Trip>> getTripsServices() async {
+    List<Trip> trips = [];
+    try {
+      Response response = await _dio.get(_testURL + '/trips-list');
+      trips =
+          (response.data as List).map((trip) => Trip.fromJson(trip)).toList();
+      print(trips[0].image);
+    } on DioError catch (error) {
+      print(error);
+    }
+    return trips;
+  }
 
-// //     } on DioError catch (error) {
-// //       print(error);
-// //     }
-// //     return retrievedBook;
-// //   }
+  Future<bool> CreateTrip(
+      {required String title,
+      required String description,
+      required File image}) async {
+    String token = await UserProvider().getToken();
+    print(token);
+    bool check = false;
 
-// //   Future<void> deleteTrip({required int tripId}) async {
-// //     try {
-// //       await Client.dio.delete('/trips/${tripId}');
-// //     } on DioError catch (error) {
-// //       print(error);
-// //     }
-// //   }
-// // }
+    try {
+      FormData data = FormData.fromMap({
+        "title": title,
+        "description": description,
+        "image": await MultipartFile.fromFile(image.path),
+      });
+      _dio.options.headers["Authorization"] = "Bearer ${token}";
+
+      Response response =
+          await _dio.post(_testURL + '/trips/create/', data: data);
+      check = true;
+
+      //token = response.data["token"];
+    } on DioError catch (error) {
+      print(error);
+    }
+    return check;
+  }
+
+  Future<bool> UpdateTrip(
+      {required int TripID,
+      required String title,
+      required String description,
+      required File image}) async {
+    String token = await AuthProvider().getToken();
+    print(token);
+    bool check = false;
+
+    try {
+      FormData data = FormData.fromMap({
+        "title": title,
+        "description": description,
+        "image": await MultipartFile.fromFile(image.path),
+      });
+      _dio.options.headers["Authorization"] = "Bearer ${token}";
+
+      Response response =
+          await _dio.put(_testURL + '/trips/${TripID}/update/', data: data);
+      check = true;
+    } on DioError catch (error) {
+      print(error);
+    }
+    return check;
+  }
+
+  Future<bool> DeleteTrip({required int TripID}) async {
+    String token = await AuthProvider().getToken();
+    print(token);
+    bool check = false;
+
+    try {
+      _dio.options.headers["Authorization"] = "Bearer ${token}";
+
+      Response response =
+          await _dio.delete(_testURL + '/trips/${TripID}/delete/');
+      check = true;
+    } on DioError catch (error) {
+      print(error);
+    }
+    return check;
+  }
+}

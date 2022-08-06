@@ -8,17 +8,22 @@ import 'dart:io';
 class AuthServices {
   final _dio = Dio();
 
-  final _baseUrl = "https://9b4f-188-71-240-74.in.ngrok.io/";
+  final _baseUrl = "https://6381-188-71-240-74.in.ngrok.io";
+  // Future<String>
   Future<String> signup({required User user}) async {
     late String token;
     try {
-      Response response =
-          await _dio.post(_baseUrl + 'register/', data: user.toJson());
+      Response response = await _dio.post(
+        _baseUrl + '/register/',
+        data: user.toJson(),
+        // options: Options(method: "Post")
+      );
       token = response.data["access"];
     } on DioError catch (error) {
       print(error);
     }
     return token;
+    // true;
   }
   // Future<String> signup({required User user}) async {
   //   late String token = "";
