@@ -66,10 +66,11 @@ class UserProvider extends ChangeNotifier {
     prefs.setString('access', token);
   }
 
-  void getToken() async {
+  Future<String> getToken() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     token = prefs.getString('access') ?? "";
-    notifyListeners();
+
+    return token;
   }
 
   void logout() async {

@@ -9,11 +9,18 @@ import 'package:tripo_app/widgets/signupshow.dart';
 import '../models/user.dart';
 import '../widgets/signinshowup.dart';
 
-class SignupSigninPage extends StatelessWidget {
+class SignupSigninPage extends StatefulWidget {
   SignupSigninPage({Key? key}) : super(key: key);
 
+  @override
+  State<SignupSigninPage> createState() => _SignupSigninPageState();
+}
+
+class _SignupSigninPageState extends State<SignupSigninPage> {
   final usernameController = TextEditingController();
+
   final passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Stack(children: [

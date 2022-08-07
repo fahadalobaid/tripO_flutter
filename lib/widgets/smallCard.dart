@@ -2,10 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:go_router/go_router.dart';
+import 'package:tripo_app/models/trip.dart';
 
-class SmallCard extends StatelessWidget {
-  const SmallCard({Key? key}) : super(key: key);
+class SmallCard extends StatefulWidget {
+  final Trip trip;
+  const SmallCard({Key? key, required this.trip}) : super(key: key);
 
+  @override
+  State<SmallCard> createState() => _SmallCardState();
+}
+
+class _SmallCardState extends State<SmallCard> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -30,8 +37,10 @@ class SmallCard extends StatelessWidget {
                         //  round radius
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(25.0),
+                            // Image.network( trips.image,fit: BoxFit.fill)
+                            // alignment: Alignment.topCenter)
                             image: DecorationImage(
-                              image: AssetImage("assets/images/BackGround.png"),
+                              image: AssetImage("${widget.trip.image}"),
                               fit: BoxFit.fill,
                               alignment: Alignment.topCenter,
                             ))),
@@ -43,14 +52,14 @@ class SmallCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "City name",
+                      "${widget.trip.title}",
                       style: TextStyle(
                           fontSize: 10,
                           fontWeight: FontWeight.bold,
                           color: Colors.black),
                     ),
                     Text(
-                      "name",
+                      "${widget.trip.owner}",
                       style: TextStyle(fontSize: 10, color: Colors.black),
                     ),
                   ],

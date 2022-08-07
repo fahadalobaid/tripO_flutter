@@ -4,7 +4,9 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:tripo_app/pages/ExplorePage.dart';
+import 'package:tripo_app/pages/GroupPage.dart';
 import 'package:tripo_app/pages/ProfilePage.dart';
+import 'package:tripo_app/pages/favPage.dart';
 import 'package:tripo_app/providers/auth_provider.dart';
 
 class VaviBar extends StatefulWidget {
@@ -19,6 +21,8 @@ class _VaviBarState extends State<VaviBar> {
 
   final screens = [
     ExplorePage(),
+    GroupPage(),
+    Favorate(),
     EditProfilePage()
     // EditProfilePage(),
     // profile

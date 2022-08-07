@@ -4,17 +4,18 @@ import 'package:dio/dio.dart';
 import 'package:tripo_app/models/user.dart';
 import 'package:tripo_app/services/client.dart';
 import 'dart:io';
+import 'dart:html';
 
 class AuthServices {
   final _dio = Dio();
 
-  final _baseUrl = "https://6381-188-71-240-74.in.ngrok.io";
+  final _baseUrl = "https://7b81-91-140-195-180.eu.ngrok.io/";
   // Future<String>
   Future<String> signup({required User user}) async {
     late String token;
     try {
       Response response = await _dio.post(
-        _baseUrl + '/register/',
+        _baseUrl + 'register/',
         data: user.toJson(),
         // options: Options(method: "Post")
       );

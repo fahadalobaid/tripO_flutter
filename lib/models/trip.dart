@@ -1,22 +1,22 @@
 import 'package:json_annotation/json_annotation.dart';
-part 'trips.g.dart';
+part 'trip.g.dart';
 
 @JsonSerializable()
-class Trips {
+class Trip {
   int? id;
   String? title;
   String? description;
   String? image;
-  int? user;
+  int? owner;
 
-  Trips({
+  Trip({
     this.id,
     this.title,
     this.description,
     this.image,
-    this.user,
+    this.owner,
   });
 
-  factory Trips.fromJson(Map<String, dynamic> json) => _$TripsFromJson(json);
-  Map<String, dynamic> toJson() => _$TripsToJson(this);
+  factory Trip.fromJson(Map<String, dynamic> json) => _$TripFromJson(json);
+  Map<String, dynamic> toJson() => _$TripToJson(this);
 }
